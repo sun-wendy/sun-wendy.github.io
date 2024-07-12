@@ -18,7 +18,7 @@ Random interests outside academics: Crypto, photography.
 Research
 ======
 
-<div style="margin-top: 10px;"></div>
+<div style="margin-top: 20px;"></div>
 
 I currently work on evaluating LLM's capability at writing formally verifiable code at <a href="https://tegmark.org/" target="_blank">Max Tegmark's group</a>.
 

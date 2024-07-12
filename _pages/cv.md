@@ -1,5 +1,6 @@
 ---
 layout: archive
+title: "CV"
 permalink: /cv/
 author_profile: true
 redirect_from:
@@ -8,8 +9,7 @@ redirect_from:
 
 {% include base_path %}
 
-Education 🏛️
-======
+<h2 style="font-size: 1.3em;">Education 🏛️</h2>
 
 <div style="margin-top: 30px;"></div>
 
@@ -18,11 +18,10 @@ Education 🏛️
   * Relevant coursework: Combinatorial optimization, Design & analysis of algorithms, Advances in Computer Vision, Computer graphics, Intro to numerical analysis, Real analysis
   * Clubs & activities: <a href="https://aialignment.mit.edu/" target="_blank">MIT AI Alignment</a>, Traders@MIT
 
-<br>
+<div style="margin-top: 60px;"></div>
 
 
-Experience 👩‍💻
-======
+<h2 style="font-size: 1.3em;">Experience 👩‍💻</h2>
 
 <div style="margin-top: 30px;"></div>
 
