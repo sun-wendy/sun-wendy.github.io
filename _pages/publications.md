@@ -1,13 +1,13 @@
 ---
 layout: archive
-title: "Publications"
+title: "Publications 📝"
 permalink: /publications/
 author_profile: true
 ---
 
 {% include base_path %}
 
-<p></p>
+<div style="margin-top: 35px;"></div>
 
 Chloe Loughridge<sup>*</sup>, **Qinyi Sun**<sup>*</sup>, Seth Ahrenbach, Federico Cassano, Chuyue Sun, Ying Sheng, Anish Mudide, Md Rakib Hossain Misu, Nada Amin, Max Tegmark. "<a href="https://arxiv.org/abs/2406.08467" target="_blank">**DafnyBench: A Benchmark for Formal Software Verification**</a>". Preprint on arXiv, 2024.
 

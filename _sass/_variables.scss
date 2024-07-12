@@ -6,7 +6,7 @@
    Typography
    ========================================================================== */
 
-$doc-font-size              : 22;
+$doc-font-size              : 18;
 
 /* paragraph indention */
 $paragraph-indent           : false; // true, false (default)
@@ -29,9 +29,9 @@ $calisto                    : "Calisto MT", serif;
 $garamond                   : Garamond, serif;
 $nunito                     : "Nunito", sans-serif;
 
-$global-font-family         : $calisto;
-$header-font-family         : $calisto;
-$caption-font-family        : $calisto;
+$global-font-family         : $sans-serif;
+$header-font-family         : $sans-serif;
+$caption-font-family        : $sans-serif;
 
 /* type scale */
 $type-size-1                : 2.441em;  // ~39.056px
