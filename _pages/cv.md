@@ -28,7 +28,7 @@ redirect_from:
 * Research Intern, **Center for Human-Compatible Artificial Intelligence (CHAI)**, Berkeley, CA, <span style="color: grey;">June - Aug. 2024</span>
 <br>
 
-* Undergraduate Researcher, **The NSF AI Institute for Artificial Intelligence and Fundamental Interactions (IAIFI), Tegmark AI Safety Group**, Cambridge, MA, <span style="color: grey;">Feb. 2024 - Present</span>
+* Undergraduate Researcher, **NSF AI Institute for Artificial Intelligence and Fundamental Interactions (IAIFI), Tegmark AI Safety Group**, Cambridge, MA, <span style="color: grey;">Feb. 2024 - Present</span>
   * Evaluating LLM's capability at writing formally verifiable code
 <br><br>
 
