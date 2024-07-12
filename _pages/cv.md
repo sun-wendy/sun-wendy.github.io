@@ -13,7 +13,7 @@ redirect_from:
 
 <div style="margin-top: 30px;"></div>
 
-* **Massachusetts Institute of Technology**, Cambridge, MA, May 2026 (expected)
+* **Massachusetts Institute of Technology**, Cambridge, MA, <span style="color: grey;">May 2026 (expected)</span>
   * B.S. in Artificial Intelligence & Decision Making, Mathematics
   * Relevant coursework: Combinatorial optimization, Design & analysis of algorithms, Advances in Computer Vision, Computer graphics, Intro to numerical analysis, Real analysis
   * Clubs & activities: <a href="https://aialignment.mit.edu/" target="_blank">MIT AI Alignment</a>, Traders@MIT
