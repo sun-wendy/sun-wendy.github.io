@@ -1,1 +1,1 @@
-New personal website, based on Jon Barron's template https://jonbarron.info/
+My personal website, based on [Jon Barron's template](https://jonbarron.info/).

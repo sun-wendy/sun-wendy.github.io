@@ -3,12 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jasmine Shone | MIT</title>
+    <title>Wendy Q. Sun</title>
     <link rel="icon" type="image/svg+xml" href="images/cat.png" />
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Newsreader:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']]
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
     <style>
         :root {
@@ -30,7 +41,7 @@
             background: var(--bg);
             color: var(--text-main);
             line-height: 1.6;
-            font-size: 18px;
+            font-size: 18.5px;
             overflow-y: scroll; /* Prevents layout shift between pages */
         }
 
@@ -52,8 +63,8 @@
         .header-grid {
             display: grid;
             grid-template-columns: 70% 30%;
-            gap: 40px;
-            margin-bottom: 60px;
+            gap: 50px;
+            margin-bottom: 80px;
             align-items: start;
         }
 
@@ -67,13 +78,25 @@
         .bio-text .subtitle {
             font-size: 1.1rem;
             color: var(--text-muted);
-            margin-bottom: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .bio-text p {
+            margin-bottom: 1.0rem;
+            line-height: 1.5;
+        }
+
+        .bio-text p a {
+            color: var(--accent);
+            text-decoration: underline;
+            text-decoration-thickness: 1px;
+            text-underline-offset: 2px;
         }
 
         .social-links {
-            margin-top: 1.5rem;
+            margin-top: 2.5rem;
             font-family: 'Inter', sans-serif;
-            font-size: 0.9rem;
+            font-size: 1.5rem;
         }
         .social-links a { margin-right: 15px; font-weight: 500; }
 
@@ -87,7 +110,7 @@
         }
 
         /* --- Section Styling --- */
-        section { margin-bottom: 80px; }
+        section { margin-bottom: 60px; }
         
         .section-title {
             font-size: 1.5rem;
@@ -101,51 +124,37 @@
         /* --- Research Papers (Square Layout) --- */
         .paper-row {
             display: grid;
-            grid-template-columns: 220px 1fr; 
+            grid-template-columns: 1fr; 
             gap: 35px;
             margin-bottom: 50px;
             align-items: start;
         }
 
-        .paper-media {
-            position: relative;
-            width: 100%;
-            height: 220px; /* Square */
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-            background: #f0f0f0; 
+        .paper-title {
+            font-family: 'Newsreader', serif;
+            font-weight: 700;        /* ← bold */
+            margin-bottom: 3px;
+            line-height: 1.4;
         }
 
-        .paper-media img, .paper-media video {
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            object-fit: cover; 
-            display: block;
+        .paper-authors {
+            margin-bottom: 3px;
         }
 
-        .paper-content { padding-top: 5px; }
+        .authors-toggle {
+            cursor: pointer;
+            text-decoration: underline;
+            text-decoration-style: dotted;
+            text-underline-offset: 3px;
+            transition: color 0.2s;
+        }
 
-        .paper-content h3 {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 8px;
-            line-height: 1.3;
+        .authors-toggle:hover {
+            color: var(--accent);
         }
 
         .paper-venue {
-            font-size: 0.9rem;
-            color: var(--accent);
-            font-weight: 600;
-            font-family: 'Inter', sans-serif;
             margin-bottom: 12px;
-        }
-
-        .paper-desc {
-            font-size: 1rem;
-            color: var(--text-muted);
-            margin-bottom: 15px;
         }
 
         .paper-links {
@@ -161,98 +170,6 @@
             letter-spacing: 0.05em;
         }
         .paper-links a:hover { color: var(--accent); }
-
-        /* --- Contributions Toggle --- */
-        .contributions-wrapper { margin-top: 10px; }
-        
-        .contributions-toggle {
-            font-size: 0.85rem;
-            font-family: 'Inter', sans-serif;
-            color: var(--text-light);
-            cursor: pointer;
-            user-select: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            transition: color 0.2s;
-        }
-        
-        .contributions-toggle:hover { color: var(--accent); }
-
-        .contributions-toggle::before {
-            content: '▸'; 
-            display: inline-block;
-            transition: transform 0.2s ease;
-        }
-        
-        .contributions-toggle.active::before { transform: rotate(90deg); }
-
-        .contributions-content {
-            display: none;
-            font-size: 0.9rem;
-            color: #444; 
-            background: #f9f9f9;
-            padding: 10px 15px;
-            margin-top: 8px;
-            border-left: 3px solid #eee;
-            border-radius: 0 4px 4px 0;
-            line-height: 1.5;
-        }
-        
-        /* Dropdown fade in (Moves DOWN) */
-        .contributions-content.active { display: block; animation: contribFadeIn 0.3s; }
-
-        /* --- Other Lists --- */
-        .news-list { list-style: none; }
-        .news-list li {
-            display: grid;
-            grid-template-columns: 80px 1fr;
-            margin-bottom: 12px;
-        }
-        .news-date {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.85rem;
-            color: var(--text-light);
-            padding-top: 4px;
-        }
-
-        .work-grid { display: grid; gap: 25px; }
-        .work-item {
-            display: grid;
-            grid-template-columns: 60px 1fr;
-            gap: 20px;
-        }
-        .work-logo img {
-            width: 100%;
-            border-radius: 8px;
-            aspect-ratio: 1/1;
-            object-fit: cover;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-        }
-        .work-details h4 { font-weight: 600; font-size: 1.1rem; }
-        .work-details .role { font-family: 'Inter', sans-serif; font-size: 0.9rem; color: var(--text-muted); }
-
-        /* --- Fun Section --- */
-        .fun-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-        }
-        .fun-item h3 {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 10px;
-            border-bottom: 2px solid #eee;
-            padding-bottom: 5px;
-        }
-        .fun-links {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            font-size: 0.95rem;
-        }
-
-        /* --- Animations --- */
         
         /* Page Load: Moves UP and fades in */
         @keyframes pageEnter {
@@ -289,8 +206,6 @@
                 margin-right: 20px;
                 margin-bottom: 10px;
             }
-
-            .fun-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -300,307 +215,56 @@
         
         <div class="header-grid">
             <div class="bio-text">
-                <h1>Jasmine Shone</h1>
-                <div class="subtitle sans">Student + Researcher at MIT</div>
+                <h1>Wendy Q. Sun</h1>
+                <div class="subtitle sans">Physics & AI at MIT</div>
                 <p>
-                    Hi! I'm Jasmine Shone, a current student at MIT. This summer, I was a SWE Intern at Meta working on a computer vision model launch at Meta Superintelligence Labs and large-scale load testing at Instagram.
+                    Hi! I'm Wendy. I'm an astronomy research assistant at the Institute for Astronomy (<a href="https://www.ifa.hawaii.edu/" target="_blank" rel="noopener">IfA</a>) at the University of Hawaiʻi, where I study little red dots (LRDs) and am fortunate to be mentored by <a href="https://rohannaidu.github.io/" target="_blank" rel="noopener">Prof. Rohan Naidu</a>.
                 </p>
                 <p>
-                    I am currently researching at the <a href="#">Kaiming He Lab</a>, focusing on effective tokenization/representations for large scale chaotic system data in combination with latent diffusion models. I'm one of the co-leads for AI @ MIT Reading Group.
+                    I completed my undergraduate studies in Physics and AI at MIT in May 2026. Before turning to astronomy, my research was in machine learning — including AI for mathematics and image generation.
+                </p>
+                <p>
+                    Please find my CV <a href="data/wendy_sun_CV.pdf" target="_blank" rel="noopener">here</a>.
                 </p>
                 <div class="social-links">
-                    <a href="/cdn-cgi/l/email-protection#ea808b99998285848faa87839ec48f8e9f">Email</a>
-                    <a href="https://docs.google.com/document/d/1IotUcyU1DDuTVccRchE9AyiylOuC9F7ZL-lh7w6dJnM/edit?usp=sharing">CV</a>
-                    <a href="https://github.com/jasshone/">Github</a>
-                    <a href="https://www.linkedin.com/in/jasmine-shone-a90853149/">LinkedIn</a>
-                    <a href="blog.html">Blog</a>
+                    <a href="mailto:wendysun@mit.edu" aria-label="Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                    <a href="data/wendy_sun_CV.pdf" aria-label="CV" target="_blank" rel="noopener">
+                        <i class="fas fa-file-lines"></i>
+                    </a>
+                    <a href="https://scholar.google.com/citations?user=fPzn11wAAAAJ&hl=en" aria-label="Google Scholar" target="_blank" rel="noopener">
+                        <i class="fas fa-graduation-cap"></i>
+                    </a>
+                    <a href="https://orcid.org/0009-0007-3791-7890" aria-label="ORCID" target="_blank" rel="noopener">
+                        <i class="fab fa-orcid"></i>
+                    </a>
+                    <a href="https://github.com/sun-wendy" aria-label="GitHub" target="_blank" rel="noopener">
+                        <i class="fab fa-github"></i>
+                    </a>
                 </div>
             </div>
             <div class="profile-photo-container">
-                <img src="images/headshot.png" alt="Jasmine Shone" class="profile-photo">
+                <img src="images/profile_img.jpg" alt="Jasmine Shone" class="profile-photo">
             </div>
         </div>
 
-        <section id="research">
-            <h2 class="section-title sans">Research</h2>
-            
-            <div class="paper-row">
-                <div class="paper-media">
-                    <img src="images/pretty.gif" alt="Latent Diffusion">
-                </div>
-                <div class="paper-content">
-                    <h3>Diffusion for PDEs</h3>
-                    <div class="paper-venue">In Progress</div>
-                    <p class="paper-desc">Modeling cool physics</p>
-                    <div class="contributions-wrapper">
-                        <div class="contributions-toggle">Contributions</div>
-                        <div class="contributions-content">
-                            Pretraining 300M+ parameter models on 15 TB of physics sim data
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
+        <section id="publications">
+            <h2 class="section-title sans">Publications</h2>
 
             <div class="paper-row">
-                <div class="paper-media">
-                    <video autoplay loop muted playsinline>
-                        <source src="images/SAM3D1.mp4" type="video/mp4">
-                    </video>
-                </div>
                 <div class="paper-content">
-                    <h3><a href="https://ai.meta.com/sam3d/" class="title-link">SAM 3D @ Meta Superintelligence</a></h3>
-                    <div class="paper-venue">In Submission</div>
-                    <p class="paper-desc">2D to 3D objects!</p>
-                    <div class="paper-links">
-                        <a href="https://ai.meta.com/sam3d/">launch</a>
-                        <a href="https://ai.meta.com/research/publications/sam-3d-3dfy-anything-in-images/">paper</a>
-                    </div>
-                    <div class="contributions-wrapper">
-                        <div class="contributions-toggle">Contributions</div>
-                        <div class="contributions-content">
-                            Designing and implementing a modified version of the SuGaR algorithm, reducing runtime from 30 m to ~1 m 40 s. 
-                            Proposing and implementing pointcloud downsampling algorithm which reduces points by up to an 12% average.
-                            Created parallelized script to improve training efficiency through data cleaning, detecting 6+% of corrupted data.
-                            Implemented baseline for evaluation metric and created easy-to-follow jupyter notebook.
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="paper-row">
-                <div class="paper-media">
-                    <img src="images/Beyond_ICON.png" alt="Beyond I-Con">
-                </div>
-                <div class="paper-content">
-                    <h3><a href="https://www.arxiv.org/abs/2509.04734" class="title-link">Beyond I-Con: Exploring a New Dimension of Distance Measures</a></h3>
-                    <div class="paper-venue">NeurIPS NeurReps Workshop 2025 · NeurIPS WiML Workshop 2025</div>
-                    <p class="paper-desc">
-                        We extend the I-Con framework to discover new losses which achieve state-of-the-art results on clustering and supervised contrastive learning.
+                    <p class="paper-title">Little Red Dot $-$ Host Galaxy $=$ Black Hole Star: A Gas-Enshrouded Heart at the Center of Every Little Red Dot</p>
+                    <p class="paper-authors">
+                        Wendy Q. Sun, Rohan P. Naidu, Jorryt Matthee, Anna de Graaff, <span class="authors-toggle" data-collapsed="and 29 more authors." data-expanded="John Chisholm, Jenny E. Greene, Pascal A. Oesch, Alberto Torralba, Raphael E. Hviding, Gabriel Brammer, Robert A. Simcoe, Sownak Bose, Rychard Bouwens, Pratika Dayal, Anna-Christina Eilers, Qinyue Fei, Lukas J. Furtak, Rashmi Gottumukkala, Andy Goulding, Kasper E. Heintz, Michaela Hirschmann, Vasily Kokorev, Joel Leja, Zhaoran Liu, Priyamvada Natarajan, Andrew D. Santarelli, David J. Setton, Aaron Smith, Sandro Tacchella, Marta Volonteri, Fabian Walter, Andrea Weibel, and Christina C. Williams">and 29 more authors</span>
                     </p>
-                    <div class="paper-links">
-                        <a href="https://www.arxiv.org/abs/2509.04734">arXiv</a>
-                        <a href="markdown-viewer.html?file=posts%2F2025-08-19-Beyond-I-Con.md&title=Beyond%20I-Con%3A%20Exploring%20a%20New%20Dimension%20of%20Distance%20Measures%20in%20Representation%20Learning">Blog</a>
-                    </div>
-                    <div class="contributions-wrapper">
-                        <div class="contributions-toggle">Contributions</div>
-                        <div class="contributions-content">
-                            Designed, implemented, and evaluated loss functions based on the I-Con framework. Conducted analysis on experimental results.
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="paper-row">
-                <div class="paper-media">
-                    <img src="images/embeddings.png" alt="Embeddings">
-                </div>
-                <div class="paper-content">
-                    <h3>Text-Invariant Similarity Learning</h3>
-                    <p class="paper-desc">
-                        We create a new paradigm of image-pair similarity learning conditioned on text descriptions.
-                    </p>
-                    <div class="paper-links">
-                        <a href="markdown-viewer.html?file=posts%2F2025-08-20-Better-Notions-Of-Similarity.md&title=Better%20Notions%20of%20Similarity%20for%20Image-image%20Contrastive%20Learning">Blog</a>
-                    </div>
-                    <div class="contributions-wrapper">
-                        <div class="contributions-toggle">Contributions</div>
-                        <div class="contributions-content">
-                            Designed and implemented image-pair similarity annotation pipeline.
-                            Designed, implemented, and explored different experimental setups and loss functions.
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="paper-row">
-                <div class="paper-media">
-                    <video autoplay loop muted playsinline>
-                        <source src="images/pour_obj.mp4" type="video/mp4">
-                    </video>
-                </div>
-                <div class="paper-content">
-                    <h3><a href="https://kalm-il.github.io/" class="title-link">Keypoint Abstraction using Large Models for Object-Relative Imitation Learning</a></h3>
-                    <div class="paper-venue">ICRA 2025 · CoRL LangRob Best Paper 2024</div>
-                    <p class="paper-desc">
-                        Utilizing priors from Vision-language models and image features to generalize effectively across object poses, camera viewpoints, and object instances with only 10 demonstrations.
-                    </p>
-                    <div class="paper-links">
-                        <a href="https://arxiv.org/abs/2410.23254">arXiv</a>
-                        <a href="https://kalm-il.github.io/">Project</a>
-                    </div>
-                    <div class="contributions-wrapper">
-                        <div class="contributions-toggle">Contributions</div>
-                        <div class="contributions-content">
-                            Trained multimodal models utilizing pointcloud encoders, object-wise transformers, and vision foundation models, improving evaluation performance by 27.5%<br>
-                            Created and designed keypoint proposal pipeline with specialized VLM prompting SAM, furthest point sampling, mark-based prompting, RANSAC, and point cloud clustering
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="paper-row">
-                <div class="paper-media">
-                    <img src="images/Datathon.png" alt="Datathon">
-                </div>
-                <div class="paper-content">
-                    <h3>The Correlation of Regional Gas Prices with Unemployment</h3>
-                    <div class="paper-venue">Citadel Women's Datathon Winning Report 2024</div>
-                    <p class="paper-desc">
-                        Are fluctuations in gas prices predictive of unemployment rates and how do regional differences in mass transit and gasoline production affect this trend?
-                    </p>
-                    <div class="contributions-wrapper">
-                        <div class="contributions-toggle">Contributions</div>
-                        <div class="contributions-content">
-                            Coming up with the initial research question + insight to use multiple additional datasets beyond the ones we were provided in the competition. Also worked on most of the stats/modelling work (Granger Causality, ADF, VAR modelling).
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="paper-row">
-                <div class="paper-media">
-                    <video autoplay loop muted playsinline>
-                        <source src="images/sketch.mp4" type="video/mp4">
-                    </video>
-                </div>
-                <div class="paper-content">
-                    <h3><a href="https://yael-vinker.github.io/sketch-agent/" class="title-link">SketchAgent: Language-Driven Sequential Sketch Generation</a></h3>
-                    <div class="paper-venue">CVPR 2025</div>
-                    <p class="paper-desc">
-                        We introduce SketchAgent, a novel framework for generating sequential sketches from language prompts.
-                    </p>
-                    <div class="paper-links">
-                        <a href="https://yael-vinker.github.io/sketch-agent/">Project</a>
-                    </div>
-                    <div class="contributions-wrapper">
-                        <div class="contributions-toggle">Contributions</div>
-                        <div class="contributions-content">
-                            Worked on moving the LLM inference pipeline to a locally hosted version of Llama Vision 3.2 11B and Llama 3.2 90B. Learned about quantization, multi-gpu inference, and prompting techniques.
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="paper-row">
-                <div class="paper-media">
-                    <img src="images/app_creation.png" alt="App Creation">
-                </div>
-                <div class="paper-content">
-                    <h3>Systematic Optimization of App Generation Few Shot Learning</h3>
-                    <div class="paper-venue">RSI 2022 · Regeneron STS Top 300</div>
-                    <p class="paper-desc">
-                        We create an LLM in-context learning pipeline to systematically optimize prompt token length, few-shot selection, and ordering.
-                    </p>
-                    <div class="paper-links">
-                        <a href="https://actascientific.com/ASCS/pdf/ASCS-05-0448.pdf">Paper</a>
-                    </div>
-                    <div class="contributions-wrapper">
-                        <div class="contributions-toggle">Contributions</div>
-                        <div class="contributions-content">
-                            Developed the p-mRMR algorithm and prompt creation framework, designed and wrote an evaluation suite of test applications and performed manual error evaluation of generated apps.
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="paper-row">
-                <div class="paper-media">
-                    <img src="images/fundus1.png" alt="Fundus">
-                </div>
-                <div class="paper-content">
-                    <h3>Stable Diffusion on Glaucoma Fundus Images in Low-Data Settings</h3>
-                    <div class="paper-venue">Computer Vision Final Project</div>
-                    <p class="paper-desc">
-                        We improve stable diffusion's ability to generate high-quality fundus images by finetuning on an extremely small dataset of 170 images.
-                    </p>
-                    <div class="contributions-wrapper">
-                        <div class="contributions-toggle">Contributions</div>
-                        <div class="contributions-content">
-                            Worked on designing the project/experiments, training the model, doing evals with resnet, and baselines (GANs)
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </section>
-
-        <section id="experience">
-            <h2 class="section-title sans">Experience</h2>
-            <div class="work-grid">
-                <div class="work-item">
-                    <div class="work-logo">
-                        <img src="images/labubu-edited.png" alt="Meta">
-                    </div>
-                    <div class="work-details">
-                        <h4>Meta <span class="role">/ SWE Intern</span></h4>
-                        <p class="desc" style="color:#555; margin-top:5px; font-size:0.95rem;">Meta Superintelligence Labs (Vision Model Launch) & Instagram (Load Testing).</p>
-                    </div>
-                </div>
-                <div class="work-item">
-                    <div class="work-logo">
-                        <img src="images/stocks.png" alt="HRT">
-                    </div>
-                    <div class="work-details">
-                        <h4>Hudson River Trading <span class="role">/ Core SWE & Algo Intern</span></h4>
-                        <p class="desc" style="color:#555; margin-top:5px; font-size:0.95rem;">Built C++ infra for live trading; Deployed profitable trading bot for Brazilian equities.</p>
-                    </div>
-                </div>
-                <div class="work-item">
-                    <div class="work-logo">
-                        <img src="images/robot_square.png" alt="MIT">
-                    </div>
-                    <div class="work-details">
-                        <h4>MIT LIS Lab <span class="role">/ Research Assistant</span></h4>
-                        <p class="desc" style="color:#555; margin-top:5px; font-size:0.95rem;">Robotics generalization research using keypoint abstraction.</p>
-                    </div>
+                    <div class="paper-venue"><em>Open Journal of Astrophysics</em>, May 2026</div>
                 </div>
             </div>
         </section>
 
-        <section id="awards">
-            <h2 class="section-title sans">Awards</h2>
-            <ul class="news-list">
-                <li><span class="news-date">2025</span> <span>Neo Finalist</span></li>
-                <li><span class="news-date">2024</span> <span>HackMIT Challenge Track Winner</span></li>
-                <li><span class="news-date">2024</span> <span>Citadel Women's Datathon First Place Report</span></li>
-                <li><span class="news-date">2023</span> <span>Atlas Fellow & Regeneron STS Scholar</span></li>
-                <li><span class="news-date">2022</span> <span>RSI Scholar</span></li>
-                <li><span class="news-date">2022</span> <span>Scholastic Arts and Writing National Gold/Silver</span></li>
-                <li><span class="news-date">2022</span> <span>NSDA Debate National Runner Up</span></li>
-            </ul>
-        </section>
-
-        <section id="fun">
-            <h2 class="section-title sans">Fun Stuff</h2>
-            <div class="fun-grid">
-                <div class="fun-item">
-                    <h3>Music</h3>
-                    <div class="fun-links">
-                        <a href="https://youtu.be/dYIOTRNfNPw?feature=shared">Until I Found You (Cover)</a>
-                        <a href="https://youtu.be/28cnYUPvkE8?feature=shared">After the Journey (Orig)</a>
-                        <a href="https://www.instagram.com/jasmine_s.wav/">Instagram</a>
-                    </div>
-                </div>
-                <div class="fun-item">
-                    <h3>Writing</h3>
-                    <div class="fun-links">
-                        <a href="https://docs.google.com/document/d/1Dj1WdJ7DWwaYeUvAaqp-dzbUK3Oqmg006THt9MCAj_Q/edit?usp=sharing">Thoughts in the Silent Night</a>
-                        <a href="https://docs.google.com/document/d/19IPOXSQN7a7vaFwNrYfMTrv9oBMD5CFzXMKdGEC8aYI/edit?usp=sharing">Houston Rain</a>
-                    </div>
-                </div>
-                <div class="fun-item">
-                    <h3>Games</h3>
-                    <div class="fun-links">
-                        <a href="https://ssstudios.itch.io/the-collector">The Collector</a>
-                        <a href="https://willyue.itch.io/a-quarky-tale">A Quarky Tale</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <div style="text-align:center; padding: 40px 0; color: #999; font-size: 0.8rem; font-family:'Inter',sans-serif;">
-            &copy; 2025 Jasmine Shone. 
+        <div style="text-align:center; padding: 0 0 3px; color: #999; font-size: 0.8rem; font-family:'Inter',sans-serif;">
+            &copy; 2026 Wendy Q. Sun. Last updated June 2026.
         </div>
 
     </div>
@@ -621,7 +285,18 @@
                     }
                 });
             });
+
+            // Author list toggle
+            const authorToggles = document.querySelectorAll('.authors-toggle');
+            authorToggles.forEach(el => {
+                el.addEventListener('click', function() {
+                    const isExpanded = this.dataset.state === 'expanded';
+                    this.textContent = isExpanded ? this.dataset.collapsed : this.dataset.expanded;
+                    this.dataset.state = isExpanded ? 'collapsed' : 'expanded';
+                });
+            });
         });
     </script>
+
 </body>
 </html>
