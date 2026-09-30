@@ -1,5 +1,5 @@
 {
-  "name": "jasshone.github.io",
+  "name": "sun-wendy.github.io",
   "version": "1.0.0",
   "description": "New personal website, based on Jon Barron's template https://jonbarron.info/",
   "main": "index.js",
@@ -9,15 +9,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jasshone/jasshone.github.io.git"
+    "url": "git+https://github.com/sun-wendy/sun-wendy.github.io.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/jasshone/jasshone.github.io/issues"
+    "url": "https://github.com/sun-wendy/sun-wendy.github.io/issues"
   },
-  "homepage": "https://github.com/jasshone/jasshone.github.io#readme",
+  "homepage": "https://github.com/sun-wendy/sun-wendy.github.io#readme",
   "devDependencies": {
     "live-server": "^1.2.2"
   }
